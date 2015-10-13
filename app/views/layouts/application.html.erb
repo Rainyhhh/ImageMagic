@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Image Majick</title>
+		<!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> -->
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+		<%= stylesheet_link_tag "reset", :media => "all" %>
+		<%= stylesheet_link_tag "prettyPhoto", :media => "screen" %>
+		<%= stylesheet_link_tag "flexslider", :media => "screen" %>
+		<%= stylesheet_link_tag "adipoli", :media => "screen" %>
+		<%= stylesheet_link_tag "style", :media => "all" %>
+		<%= stylesheet_link_tag "responsive"%>		
+		<%= csrf_meta_tags %>
+	</head>
+	<body class="sub-page">
+    <header id="header" style="margin-bottom: 50px;">
+		<div id="header-top">
+			<div class="wrapper">
+				<nav id="" class="clearfix main-nav">
+					<ul id="main-menu" class="clearfix">
+						<li class="home-menu-item current-menu-item"><a href='/'>Home</a></li>
+						<li class="home-menu-item"><a>About</a></li>
+						<li class="home-menu-item"><a>Contact us</a></li>
+						<!-- <% if user_signed_in? %>
+						<li style="float: right; margin-left: -30px;" class="home-menu-item"><%= link_to "Log Out", destroy_user_session_url, :method => :delete %></li>
+						<li style="float: right;" class="home-menu-item"><a><%= current_user.nickname %></a></li>               
+						<% end %> -->
+					</ul><!--main-menu-->
+					
+				</nav><!--main-nav-->				
+			</div><!--wrapper-->
+		</div><!--header-top-->
+		<div id="header-bottom">
+			<div class="wrapper clearfix">
+				<div id="logo-image">
+					
+					<a><h1 style="font-size:70px;margin-top:10px;">Image Magick<img class="responsive-img" src="<%= asset_path 'logo.png' %>" style="width:30px;margin-top: -40px;"></h1></a>
+					<a></a>
+				</div><!--logo-image-->
+			</div><!--wrapper-->
+		</div><!--header-bottom-->
+	</header><!--header-->
+	<div class="wrapper clearfix" style="margin-top:-40px;margin-bottom: 20px; ">
+	<div id="main-content">
+		<div id="main-content-inner">
+			<div class="main-content-top clearfix">
+				<div class="breadcrumb clearfix">
+					<span>Welcome:</span>
+					<span class="current-page">New friends</span>
+				</div><!--breadcrumb-->
+			</div><!--main-content-top-->
+			<div class="main-content-bottom clearfix">
+				<div class="column-b">
+					<section id="left_bar" class="slider">
+						<div class="flexslider" id="home-slider">
+							<ul class="slides">
+								<li>
+									<article>
+										<a class="entry-thumb" href="#"><img src="http://www.templatemo.com/templates/templatemo_411_dragonfruit/images/templatemo_banner_slide_02.jpg" alt="" /><!-- <img src="<%= asset_path 'assets/placeholders/slider/1.jpeg' %>" --></a>
+										<div class="entry-content">
+											<h2 class="entry-title"><a href="#">Get Started Today</a></h2>
+											<p>
+												There are seven billion ways to see the world; share yours.
+											</p>
+										</div><!--entry-content-->
+									</article>
+								</li>
+								<li>
+									<article>
+										<a class="entry-thumb" href="#"><img src="http://www.templatemo.com/templates/templatemo_411_dragonfruit/images/templatemo_banner_slide_01.jpg"/><!-- <img src="<%= asset_path 'assets/placeholders/slider/2.jpeg' %>" alt="" /> --></a>
+										<div class="entry-content">
+											<h2 class="entry-title"><a href="#">Sign-up For Free to Begin</a></h2>
+											<p>
+												Log-in or sign-up on the right for free.
+											</p>
+										</div><!--entry-content-->
+									</article>
+								</li>
+								<li>
+									<article>
+										<a class="entry-thumb" href="#"><img src="http://www.templatemo.com/templates/templatemo_411_dragonfruit/images/templatemo_banner_slide_03.jpg"/><!-- <img src="<%= asset_path 'assets/placeholders/slider/2.jpeg' %>" alt="" /> --></a>
+										<div class="entry-content">
+											<h2 class="entry-title"><a href="#">Apply Effects and Share Your Creations</a></h2>
+											<p>
+												Personalise your images and share them with the world.
+											</p>
+										</div><!--entry-content-->
+									</article>
+								</li>
+							</ul><!--slides-->
+						</div><!--flexslider-->
+					</section><!--slider-->
+					<div class="clear"></div>
+				</div><!--column-b-->
+				<%= yield %>
+			</div>
+		</div>
+	</div>
+</div>
+		
+
+	</body>
+<%= javascript_include_tag 'custom' %>
+</html>

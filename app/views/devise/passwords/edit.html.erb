@@ -1,0 +1,22 @@
+<div id="right-bar" class="column-a">
+	<!--column-a-->
+	<section id="login-bar" class="widget">
+		<h4 class="widget-title">Log in</h4>
+		<div style=" padding:2% 2% 2% 2%">
+			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+			<%= f.hidden_field :reset_password_token %>
+			<label class="form-label">New password</label>
+			<%= f.password_field :password, autofocus: true, autocomplete: "off",:class=>'form-input' %>
+			<div class="clear"></div>
+			<label class="form-label">Confirm new password</label>
+			<%= f.password_field :password_confirmation, autocomplete: "off", :class=>'form-input' %>
+			<div class="clear" style="margin-top:5px;"></div>
+			<div class="kp-color-button " align="right">
+				<%= link_to 'Back to Login', new_user_session_path,:class=>'orange-button' %>
+				<%= f.submit "Change my password", :class=>'red-button'%>
+				<%= devise_error_messages! %>
+				<% end %>
+			</div>
+		</div>
+	</section><!--widget-->
+</div><!--column-a-->

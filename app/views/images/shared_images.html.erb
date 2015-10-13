@@ -1,0 +1,51 @@
+
+<%= stylesheet_link_tag "jquery.fancybox", :media => "screen" %>
+
+<div>
+	<div class="list-carousel responsive">
+		
+		<section class="widget featured-widget">
+			<h3 class="widget-title"><span>My Images</span></h3>
+			
+
+	        <div  style="width: 100%;">
+			<!-- <input type="text" placeholder="Search friends" name="search" class="form-input search" style="width:30%;margin-bottom: 10px;"> -->
+			
+			<ul class="featured-news clearfix">
+				<% @viewable_images.each do |image| %>
+					<li>					
+						<article >
+							<header  class="clearfix">								
+								<a class="fancybox" href='<%= image.picture.url %>'  title='' data-fancybox-group="gallery"><img src='<%= image.picture.thumb.url %>' class="responsive-img" alt="" /></a>
+								<p>
+									<span>Shared by:</span>
+						<span class="email"> <%= image.user.email%></span>
+								</p>
+								<%= link_to image_tag("images/download.png", :border => 0, :title => 'download', :class => 'shake_it'), download_path(:download =>{:download_image_id => image.id}), :method => 'post', :class => 'entry-comments', :style => "width:10%; margin-right:3%;"  %>
+							</header>
+							<div class="entry-content">
+								<h6 class="entry-title"><a class="fancybox" href="<%= image.picture.url %>"  title=""  data-fancybox-group=""></a></h6>
+								<!-- <a class="more-link" href="#">Share</a> -->
+							</div><!--entry-content-->
+							
+						</article>
+						
+					</li>
+				<% end %>	
+			</ul><!--end:featured-news-->
+			</div>
+		</section>
+	</div>
+</div>
+	<script>
+	$(document).ready(function() {
+	   $('.fancybox').fancybox();
+       $('.menu-item').removeClass('active');
+       $('#view2').addClass('active');
+       var options = {
+			valueNames:['email']
+		};
+		var imageList = new List('images', options);	
+	});
+    	         
+	</script>

@@ -1,0 +1,31 @@
+<h3 class="widget-title"><span>Edit Tag</span></h3>
+
+<%= form_for @image, html: {multipart: true } do |f| %>
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% @image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<div class="kopa-one-two">
+		<%= image_tag @image.picture.url, :style => 'width:90%;', :class => 'kopa-border-3' %>
+	</div>
+  
+    <div class="kopa-one-two">
+
+         <%= f.label :tag_list, "Tags (separated by commas):", :class => 'form-label' %>
+         <%= f.text_field :tag_list , :class => 'form-input', :style => 'width: 80%;'%>
+    
+  
+  <div style="margin-top:15px;"></div>
+  <div class="actions">
+    <%= f.submit 'Save tags', :class => 'red-button' %>
+  </div>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<div id="right-bar" class="column-a">
+	<!--column-a-->
+	<section id="login-bar" class="widget">
+		<h4 class="widget-title">Log in</h4>
+		<div style=" padding:2% 2% 2% 2%">
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<label class="form-label">Username</label>
+			<%= f.email_field :email , autofocus:true, :placeholder=>'email address',:class=>'form-input'%>
+			<div class="clear"></div>
+			<label class="form-label">Password</label>
+			<%= f.password_field :password, autocomplete: "off",:placeholder=>'password', :class=>'form-input'%>
+			<% if devise_mapping.rememberable? -%>
+			<div>
+				<label class="form-label"><%= f.check_box :remember_me %> <%= f.label :remember_me %></label>
+			</div>
+			<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <label class="form-label" style="float:right;"><%= link_to "Forgot your password?", new_password_path(resource_name) %></label>
+            <% end -%>
+			<% end -%>
+			<div class="clear" style="margin-top:5px;"></div>
+			<div class="kp-color-button " align="right">				
+				<%= link_to 'Sign up', new_user_registration_path,:class=>'orange-button' %>
+				<%= f.submit 'Log in',:class=>'red-button' %>
+				<% end %>
+			</div>
+		</div>
+	</section><!--widget-->
+</div><!--column-a-->
+
+<!-- <%= javascript_include_tag 'custom' %> -->
+

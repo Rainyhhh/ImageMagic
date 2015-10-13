@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag "jquery.fancybox", :media => "screen" %>
+<style>
+	.tag-header a:hover {
+		color:yellow;
+		cursor: pointer;
+	}
+	.tag-header .active {
+		color: yellow;
+	}
+</style>
+<div>
+	<div class="list-carousel responsive">
+
+		<section class="widget featured-widget">
+			<h3 class="widget-title"><span>Apply filter to image</span></h3>
+			<div class="tag-header">
+				<%= link_to image_tag("images/back.png", :border => 0, :title => 'back', :class => 'shake_it', :style => "width:3%;"), root_path , :class => 'entry-comments' %>
+				<label>Back</label>
+			</div>
+			<div class="tag-header">
+				<a class="dark-blue-button active" style="border: none;" id='original' onclick="change_origin('<%= @image.picture.thumb_large.url%>')">Original Image</a>
+				<% @filters.map {|x| x.to_sym} .each do |filter| %>
+				<a class="dark-blue-button" style="border: none;" onclick="change('<%= @image.picture_url(filter)%>','<%= filter%>')"><%= filter %></a>
+				<%= link_to '',  create_filt_copy_path(@image, :filter =>
+				{:filter_choice => filter}), method: :post,
+				data: { confirm: "Create an image copy with #{filter} filter applied?" }, :id => filter %>
+				<% end %>
+				<input id='filter' type="hidden" value="original">
+			</div>
+            <%= image_tag @image.picture.thumb_large.url, :style => 'width: 80%;', :class => 'kopa-border-3', :id => 'picture_p' %>
+            <a class="red-button" style="border: none; margin-top: 15px; cursor: pointer;" onclick="save()">Save</a>
+		</section>
+
+	</div>
+</div>
+<script>
+	$(document).ready(function() {
+		$('.fancybox').fancybox();
+		$('.menu-item').removeClass('active');
+		$('.dark-blue-button').click(function() {
+			$('.dark-blue-button').removeClass('active');
+			$(this).addClass('active');
+		})
+	});
+	function change_origin(image_url) {
+		document.getElementById('picture_p').src = image_url;
+		document.getElementById('filter').value = 'original';
+	}
+	function change(image_url, filter) {
+		document.getElementById('picture_p').src = image_url;
+		document.getElementById('filter').value = filter;
+	}
+	function save() {
+		if(document.getElementById('filter').value != 'original') {
+			document.getElementById(document.getElementById('filter').value).click();
+		}
+	}
+
+</script>

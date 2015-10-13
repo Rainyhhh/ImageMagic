@@ -1,0 +1,8 @@
+.social-links li, .bottom-sidebar .kp-dropcap.dark, #back-top a, #header-top {
+	behavior: url(js/PIE.htc);
+}
+
+#main-content {
+	border-bottom:1px solid #b6b6b6;
+	border-top:1px solid #b6b6b6;
+}

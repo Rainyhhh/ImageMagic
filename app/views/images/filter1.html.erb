@@ -1,0 +1,31 @@
+<h1>Apply filter to image</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter Previews</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	  <tr>
+  	  	<!-- display original image -->
+        <td><%= image_tag @image.picture.thumb_large.url %></td>
+        <td>Original</td>
+      </tr>
+  	
+  	<!-- display filter previews -->
+    <% @filters.map {|x| x.to_sym} .each do |filter| %>
+      <tr>
+        <td><%= image_tag @image.picture_url(filter) %></td>
+        <td><%= link_to filter, create_filt_copy_path(@image, :filter => 
+      	    {:filter_choice => filter}), method: :post, 
+            data: { confirm: "Create an image copy with #{filter} filter applied?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Back', images_path %>

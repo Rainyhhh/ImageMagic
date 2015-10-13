@@ -1,0 +1,59 @@
+.kp-dropcap, .kp-tag, .kp-tag span, .breadcrumb span, .entry-categories, .entry-date, .list-carousel .carousel-next, .list-carousel .carousel-prev, .featured-widget ul li article header p span, .column-b .entry-item header p span, .pagination, .tweet_avatar, .column-a .tweet_avatar, .flickr-badge-image, .big-button, .medium-button, .small-button, .download-button,
+.upload-button,
+.back-button,
+.next-button,
+.complete-button,
+.cancel-button, .download-button span, .black-button, .grey-button, .white-button, .red-button, .orange-button, .yellow-button, .dark-blue-button, .light-blue-button, .green-button, .maroon-button, .pink-button, .accordion-title a, .entry-meta, .entry-box header .entry-comments, .kopa-tag, .comment-wrap .comment-body .comment-meta .author, .comment-wrap .comment-body .comment-meta .date, .comment-wrap .comment-body .comment-reply-link, .comment-wrap .comment-body .comment-edit-link, #submit-comment,
+#submit-contact, .related-widget .entry-content .entry-date, .related-widget .entry-content .entry-comments,
+.related-widget .entry-content .entry-meta {
+	zoom:1;
+	*display:inline;
+}
+
+.bottom-sidebar .widget .kp-categories li {
+    width: 49.9%;
+}
+.widget .other-categories li,
+.widget .older-posts li,
+.widget .recent-comments li,
+.kopa-search-list li,
+.square-list-1 li,
+.square-list-2 li,
+.star-list-1 li,
+.star-list-2 li,
+.arrow-list-1 li,
+.arrow-list-2 li,
+.play-list-1 li,
+.play-list-2 li,
+.check-list-1 li,
+.check-list-2 li,
+#toggle-view li {
+	margin-left:-15px;
+}
+
+.column-b .widget-title {
+    background: url("../images/background/pattern-4.png") repeat-x scroll 0 19px transparent;
+    border-top: 7px solid #F2472D;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+#top-banner {
+	width:467px;
+}
+
+#search-social {
+	width:55%;
+}
+
+.newsletter-form .submit {
+	border:none;
+	outline:none !important;
+}
+
+.column-a .tweet_avatar {
+	margin-right:0;
+}
+

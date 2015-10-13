@@ -1,0 +1,22 @@
+<h3 class="widget-title"><span>New Image</span></h3>
+<p id="notice">
+	<%= notice %>
+</p>
+
+	<div class="clearfix" style="margin-bottom: 20px;">
+		<%= image_tag @image.picture.url, :style => 'width:80%', :class => 'kopa-border-3'%>
+	</div>
+
+	<!--
+	<%= link_to 'Edit', edit_image_path(@image) %> |
+	-->
+	<%= link_to 'Back', images_path,:class=>'red-button' %>
+
+	<script>
+		$(document).ready(function() {
+			$('a.fancybox').fancybox();
+			$('.menu-item').removeClass('active');
+			$('#upload').addClass('active');
+		});
+
+	</script>

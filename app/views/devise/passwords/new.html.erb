@@ -1,0 +1,21 @@
+
+<div id="right-bar" class="column-a">
+					<!--column-a-->
+					<section id="register-bar" class="widget">
+						<h4 class="widget-title">Forget Password</h4>
+						<div style=" padding:2% 2% 2% 2%">
+							<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+							<label class="form-label">Email</label>
+							<%= f.email_field :email , autofocus:true, :placeholder=>'email address',:class=>'form-input'%>
+							<div class="clear" style="margin-top:5px;"></div>
+							<div class="kp-color-button" align="right">								
+								<%= f.submit 'Send me link', :class=>'orange-button'%>
+								<%= link_to 'Back to Login', new_user_session_path,:class=>'red-button' %>
+								<%= devise_error_messages! %>
+								<% end %>
+							</div>
+						</div>
+					</section><!--widget-->
+				</div><!--column-a-->
+<!-- <%= javascript_include_tag 'custom' %> -->
+

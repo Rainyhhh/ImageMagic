@@ -1,0 +1,60 @@
+<h1>My images</h1>
+
+<%= link_to 'Upload New Image', new_image_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>My Uploaded Pictures</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% if @images.empty?%>
+  		<tr><td>(None)</None></td></tr>
+  	<% else%>
+	    <% @images.each do |image| %>
+	      <tr>
+	      	<!--# Include a thumbnail of picture on index page-->
+	      	<td><%= link_to (image_tag image.picture.thumb.url), image %></td> 
+	        <!-- ><td><%= link_to 'Show', image %></td> -->
+	        <!-- ><td><%= link_to 'Edit', edit_image_path(image) %></td> -->
+	        <td><%= link_to 'Delete', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	        <td><%= link_to 'Share', share_image_path(image) %></td>
+	        <td><%= link_to 'Filter', filter_path(image) %></td>
+	      </tr>
+	    <% end %>
+	<% end%>
+  </tbody>
+</table>
+
+<br>
+
+
+<!-- listing of shared images -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Pictures Shared With Me</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% if @viewable_images.empty?%>
+  		<tr><td>(None)</None></td></tr>
+  	<% else%>
+	  	<% @viewable_images.each do |image| %>
+	  	  <tr>
+		  <!--# Include a thumbnail of picture on index page-->
+		  <td><%= link_to (image_tag image.picture.thumb.url), image %></td>
+	      <td>Shared by: <%= image.user.email%>
+		  </tr>
+		<% end %>
+	<% end %>
+  </tbody>
+</table>
+
+

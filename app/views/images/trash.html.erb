@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag "jquery.fancybox", :media => "screen" %>
+
+<div>
+	<div class="list-carousel responsive">
+
+		<section class="widget featured-widget">
+			<h3 class="widget-title"><span>My Images</span></h3>
+			<div class="tag-header">
+				<%= link_to 'Clear my Trash', clear_trash_path, :method => 'post', data: { confirm: 'Are you sure?' }, :class => 'orange-button'%>
+			</div>
+			<ul class="featured-news clearfix">
+				<% @images.each do |image| %>
+				<li>
+					<article>
+						<header class="clearfix">
+							<a class="fancybox" href='<%= image.picture.url %>'  title='' data-fancybox-group="gallery"><img src='<%= image.picture.thumb.url %>' class="responsive-img" alt="" /></a>
+							<p><span> <%= image.updated_at%> </span></p>
+							<%= link_to image_tag("images/back.png", :border => 0, :title => 'cancel', :class => 'shake_it'), return_back_path(:delete =>{:delete_image_id => image.id}), :method => :post, data: { confirm: 'Are you sure?' }, :class => 'entry-comments', :style => "width:10%;" %>
+						</header>
+						<div class="entry-content">
+							<h6 class="entry-title"><a class="fancybox" href="<%= image.picture.url %>"  title=""  data-fancybox-group=""></a></h6>
+							<!-- <a class="more-link" href="#">Share</a> -->
+						</div><!--entry-content-->
+					</article>
+				</li>
+				<% end %>
+			</ul><!--end:featured-news-->
+		</section>
+	</div>
+</div>
+<script>
+	$(document).ready(function() {
+		$('.fancybox').fancybox();
+		$('.menu-item').removeClass('active');
+		$('#trash').addClass('active');
+	});
+
+</script>

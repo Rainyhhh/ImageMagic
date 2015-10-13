@@ -1,0 +1,60 @@
+<%= stylesheet_link_tag "jquery.fancybox", :media => "screen" %>
+
+<div>
+	<div class="list-carousel responsive">
+
+		<section class="widget featured-widget">
+			<h3 class="widget-title"><span>Share Images</span></h3>
+			<div class="tag-header">
+				<%= link_to image_tag("images/back.png", :border => 0, :title => 'back', :class => 'shake_it', :style => "width:3%;"), image_path , :class => 'entry-comments' %>
+				<label>Back</label>
+			</div>
+	</div>
+	<div class="kopa-one-two">
+		<section class="widget">
+			<h4 >Image is currently shared with the following users:</h4>
+			<ul class="older-posts square-list-1">
+				<% @viewers.each do |viewer| %>
+				<li >
+					<label style="color:#f2472d;"><%= viewer.email %></label>
+					<%= link_to image_tag("images/delete.png", :border => 0, :title => 'unshare', :class => 'shake_it', :style => 'width:50%;'), cancel_share_path(:shared_image =>
+					{:shared_user_id => viewer.id, :shared_image_id => @image.id}), :method => :post,:style => 'float:right;' %>
+				</li>
+				<% end %>
+			</ul><!--older-posts-->
+		</section><!--widget-->
+		<section class="widget">
+			<h4 >Share image with another user:</h4>
+			<div id='users'>
+			<input type="text" placeholder="Search friends" name="search" class="form-input search" style="width:70%;margin-bottom: 10px;">
+			<ul class="older-posts square-list-1 list">
+				<% @candidate_users.each do |user| %>
+				<li>
+					<label style="color:#f2472d;" class="email"><%= user.email %></label>
+					<%= link_to image_tag("images/add.png", :border => 0, :title => 'share', :class => 'shake_it', :style => 'width:50%;'), create_share_path(:shared_image =>
+					{:shared_user_id => user.id, :shared_image_id => @image.id}), :method => :post,:style => 'float:right;' %>
+				</li>
+				<% end %>
+			</ul><!--older-posts-->
+			</div>
+		</section><!--widget-->
+	</div>
+	<div class="kopa-one-two">
+		<h4>You are sharing this picture:</h4>
+		<%= image_tag @image.picture.url, :style => 'width:100%;', :class => 'kopa-border-3' %>
+	</div>
+	</section>
+
+</div>
+<script>
+	$(document).ready(function() {
+		$('.fancybox').fancybox();
+		$('.menu-item').removeClass('active');
+		$('#view').addClass('active');
+		var options = {
+			valueNames:['email']
+		};
+		var userList = new List('users', options);
+	});
+
+</script>

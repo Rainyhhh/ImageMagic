@@ -1,0 +1,63 @@
+
+<%= stylesheet_link_tag "jquery.fancybox", :media => "screen" %>
+
+<div>
+	<div class="list-carousel responsive">
+		
+		<section class="widget featured-widget">
+			<h3 class="widget-title"><span>My Images</span></h3>
+			<div class="tag-header">
+			<label>
+  				My Tags: 
+  				<% @tags.each do |t| %>
+  				<%=link_to "#{t} ", view_tagged_path(t)%>|
+  				<%end%>
+  				<%=link_to "all", root_path%>
+  			</label>
+			</div>
+			
+			<!-- List of user's tags -->
+  			
+			
+			
+			<ul class="featured-news clearfix">
+				<% @images.each do |image| %>
+					<li>
+						<article>
+							<header class="clearfix">								
+								<a class="fancybox" href='<%= image.picture.url %>'  title='' data-fancybox-group="gallery"><img src='<%= image.picture.thumb.url %>' class="responsive-img" alt="" /></a>
+								
+				
+								<%= link_to image_tag("images/download.png", :border => 0, :title => 'download', :class => 'shake_it'), download_path(:download =>{:download_image_id => image.id}), :method => 'post', :class => 'entry-comments', :style => "width:10%; margin-right:3%;"  %>
+								<%= link_to image_tag("images/trash1.png", :border => 0, :title => 'delete', :class => 'shake_it'), delete_path(:delete =>{:delete_image_id => image.id}), data: { confirm: 'Are you sure?' },:method => :post, :class => 'entry-comments', :style => "width:10%;" %>
+								<%= link_to image_tag("images/share.png", :border => 0, :title => 'share', :class => 'shake_it'), share_image_path(image), :class => 'entry-comments', :style => "width:10%; margin-right:3%;"  %>
+								<%= link_to image_tag("images/filter.png", :border => 0, :title => 'apply filter', :class => 'shake_it'), filter_path(image), :class => 'entry-comments', :style => "width:10%; margin-right:3%;"  %>
+								<%= link_to image_tag("images/add.png", :border => 0, :title => 'view set', :class => 'shake_it'), view_set_path(image), :class => 'entry-comments', :style => "width:10%; margin-right:3%;"  %>
+								<%= link_to image_tag("images/tag.png", :border => 0, :title => 'edit tags', :class => 'shake_it'), edit_image_path(image), :class => 'entry-comments', :style => "width:10%; margin-right:3%;"  %>
+								<p>
+									<!-- ><span><%= image.updated_at%></span> -->
+									
+									<!-- the following line originates from: http://railscasts.com/episodes/382-tagging?view=asciicast -->
+									<span>Tags: <%= raw image.tag_list.map { |t| link_to t, view_tagged_path(t) }.join(', ') %></span>
+								</p>
+							</header>
+							<div class="entry-content">
+								<h6 class="entry-title"><a class="fancybox" href="<%= image.picture.url %>"  title=""  data-fancybox-group=""></a></h6>
+								<!-- <a class="more-link" href="#">Share</a> -->
+								
+							</div><!--entry-content-->
+						</article>
+					</li>
+				<% end %>	
+			</ul><!--end:featured-news-->
+		</section>
+	</div>
+</div>
+	<script>
+	$(document).ready(function() {
+	   $('.fancybox').fancybox();
+       $('.menu-item').removeClass('active');
+       $('#view').addClass('active'); 	
+	});
+    	         
+	</script>
